@@ -1,0 +1,5 @@
+specVersion: 0.0.4
+description: <%= name %>
+repository: https://github.com/3VLINC/meeemor
+schema:
+  file: ./schema.graphql

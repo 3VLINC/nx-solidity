@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "subgraph": {
+      "factory": "./src/generators/subgraph/generator",
+      "schema": "./src/generators/subgraph/schema.json",
+      "description": "subgraph generator"
+    }
+  }
+}
