@@ -154,34 +154,6 @@ export async function solidityGenerator(
   }
 
   tasks.push(runSymlink(tree.root, normalizedOptions.appProjectRoot));
-
-  tasks.push(addDependenciesToPackageJson(tree, {
-    
-  }, {
-    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
-    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
-    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
-    "@nomicfoundation/hardhat-ethers": "^3.0.0",
-    "@nomicfoundation/hardhat-verify": "^1.0.0",
-    "@nomiclabs/hardhat-web3": "^2.0.0",
-    "@typechain/ethers-v6": "^0.4.0",
-    "@typechain/hardhat": "^8.0.0",
-    "@types/chai": "^4.2.0",
-    "@types/mocha": ">=9.1.0",
-    "@types/node": "^14.0.0",
-    "@typescript-eslint/eslint-plugin": "4.29.2",
-    "@typescript-eslint/parser": "4.29.2",
-    "chai": "^4.2.0",
-    "ethers": "^6.4.0",
-    "hardhat": "^2.11.0",
-    "hardhat-gas-reporter": "^1.0.8",
-    "mocha": "^10.0.0",
-    "prettier": "2.4.1",
-    "rimraf": "^3.0.2",
-    "solidity-coverage": "^0.8.1",
-    "ts-node": "^10.8.0",
-    "typechain": "^8.2.0"
-  }));
   
 
   return runTasksInSerial(...tasks);
