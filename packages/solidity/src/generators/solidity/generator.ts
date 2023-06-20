@@ -97,6 +97,12 @@ export async function solidityGenerator(
           hardhatConfig: joinPathFragments(normalizedOptions.appProjectRoot, 'hardhat.config.ts')
         }
       },
+      coverage: {
+        executor: 'solidity:coverage',
+        options: {
+          hardhatConfig: joinPathFragments(normalizedOptions.appProjectRoot, 'hardhat.config.ts')
+        }
+      },
     },
   });
 

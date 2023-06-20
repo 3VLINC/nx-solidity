@@ -9,6 +9,11 @@
       "implementation": "./src/executors/compile/executor",
       "schema": "./src/executors/compile/schema.json",
       "description": "compile executor"
+    },
+    "coverage": {
+      "implementation": "./src/executors/coverage/executor",
+      "schema": "./src/executors/coverage/schema.json",
+      "description": "coverage executor"
     }
   }
 }
