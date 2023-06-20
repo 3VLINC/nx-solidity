@@ -1,6 +1,5 @@
 import {
   addDependenciesToPackageJson,
-  applyAdditionalShared,
   ensurePackage,
   extractLayoutDirectory,
   generateFiles,
