@@ -10,14 +10,13 @@ async function main() {
   const appInstance = await appFactory
     .connect(contractOwner)
     .deploy();
-
-  const {
-    deployTransaction: { blockNumber },
-  } = await appInstance.deployed();
+  
+  const { blockNumber } = await appInstance.deploymentTransaction().wait();
+  const address = appInstance.getAddress();
 
   console.log(
     'App deployed to:',
-    appInstance.address,
+    address,
     'at block',
     blockNumber
   );

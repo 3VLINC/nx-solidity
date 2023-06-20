@@ -4,6 +4,11 @@
       "implementation": "./src/executors/test/executor",
       "schema": "./src/executors/test/schema.json",
       "description": "test executor"
+    },
+    "compile": {
+      "implementation": "./src/executors/compile/executor",
+      "schema": "./src/executors/compile/schema.json",
+      "description": "compile executor"
     }
   }
 }

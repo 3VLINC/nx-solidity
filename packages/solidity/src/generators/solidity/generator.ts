@@ -88,7 +88,12 @@ export async function solidityGenerator(
       test: {
         executor: 'solidity:test',
         options: {
-          network: "polygon",
+          hardhatConfig: joinPathFragments(normalizedOptions.appProjectRoot, 'hardhat.config.ts')
+        }
+      },
+      compile: {
+        executor: 'solidity:compile',
+        options: {
           hardhatConfig: joinPathFragments(normalizedOptions.appProjectRoot, 'hardhat.config.ts')
         }
       },
