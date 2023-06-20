@@ -1,7 +1,4 @@
 import '@nomicfoundation/hardhat-toolbox';
-import '@nomicfoundation/hardhat-chai-matchers';
-import '@nomiclabs/hardhat-web3';
-import '@openzeppelin/hardhat-upgrades';
 import { HardhatUserConfig } from 'hardhat/types';
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
