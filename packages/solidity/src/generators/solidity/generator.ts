@@ -18,27 +18,6 @@ import {
 import * as NxNode from '@nx/node';
 import { SolidityGeneratorSchema } from './schema';
 import { join } from 'path';
-import { platform } from 'os';
-import { existsSync, removeSync, symlinkSync } from 'fs-extra';
-
-export function ensureNodeModulesSymlink(
-  workspaceRoot: string,
-  projectRoot: string
-): void {
-  const worksapceNodeModulesPath = join(workspaceRoot, 'node_modules');
-  if (!existsSync(worksapceNodeModulesPath)) {
-    throw new Error(`Cannot find ${worksapceNodeModulesPath}`);
-  }
-
-  const appNodeModulesPath = join(workspaceRoot, projectRoot, 'node_modules');
-  // `mklink /D` requires admin privilege in Windows so we need to use junction
-  const symlinkType = platform() === 'win32' ? 'junction' : 'dir';
-
-  if (existsSync(appNodeModulesPath)) {
-    removeSync(appNodeModulesPath);
-  }
-  symlinkSync(worksapceNodeModulesPath, appNodeModulesPath, symlinkType);
-}
 
 const nxVersion = '16.2.2';
 
@@ -73,21 +52,6 @@ function normalizeOptions(host: Tree, options: SolidityGeneratorSchema) {
   };
 }
 
-export function runSymlink(
-  workspaceRoot: string,
-  projectRoot: string
-): GeneratorCallback {
-  return () => {
-    logger.info(`creating symlinks for ${projectRoot}`);
-    try {
-      ensureNodeModulesSymlink(workspaceRoot, projectRoot);
-    } catch {
-      throw new Error(
-        `Failed to create symlinks for ${projectRoot}`
-      );
-    }
-  };
-}
 
 export async function solidityGenerator(
   tree: Tree,
@@ -145,6 +109,12 @@ export async function solidityGenerator(
     pkgJson.compilerOptions.module = "commonjs";
     return pkgJson;
   });
+  
+  updateJson(tree, join(normalizedOptions.appProjectRoot, 'tsconfig.app.json'), (pkgJson) => {
+    pkgJson.exclude = ["hardhat.config.ts"],
+    pkgJson.include = ["scripts/**/*.ts", "test/**/*.ts"]
+    return pkgJson;
+  });
 
   process.env.npm_config_legacy_peer_deps ??= 'true';
 
@@ -181,9 +151,6 @@ export async function solidityGenerator(
   if (options.pascalCaseFiles) {
     logger.warn('NOTE: --pascalCaseFiles is a noop');
   }
-
-  // tasks.push(runSymlink(tree.root, normalizedOptions.appProjectRoot));
-  
 
   return runTasksInSerial(...tasks);
 
