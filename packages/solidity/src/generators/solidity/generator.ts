@@ -1,5 +1,6 @@
 import {
   addDependenciesToPackageJson,
+  applyAdditionalShared,
   ensurePackage,
   extractLayoutDirectory,
   generateFiles,
@@ -110,6 +111,7 @@ export async function solidityGenerator(
     docker: false,
     isNest: false,
   });
+  
 
   const normalizedOptions = normalizeOptions(tree, options);
 
@@ -145,6 +147,33 @@ export async function solidityGenerator(
     return pkgJson;
   });
 
+  process.env.npm_config_legacy_peer_deps ??= 'true';
+
+  tasks.push(addDependenciesToPackageJson(
+    tree,
+    {},
+    {
+      "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+      "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+      "@nomicfoundation/hardhat-ethers": "^3.0.0",
+      "@nomicfoundation/hardhat-verify": "^1.0.0",
+      "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+      "@types/chai": "^4.2.0",
+      "@types/mocha": ">=9.1.0",
+      "@types/node": ">=12.0.0",
+      "@typechain/ethers-v6": "^0.4.0",
+      "@typechain/hardhat": "^8.0.0",
+      "chai": "^4.2.0",
+      "ethers": "^6.4.0",
+      "hardhat": "^2.11.0",
+      "hardhat-gas-reporter": "^1.0.8",
+      "solidity-coverage": "^0.8.1",
+      "ts-node": ">=8.0.0",
+      "typechain": "^8.2.0",
+      "typescript": ">=4.5.0"
+    }
+  ))
+
   
   if (options.js) {
     toJS(tree);
@@ -154,7 +183,7 @@ export async function solidityGenerator(
     logger.warn('NOTE: --pascalCaseFiles is a noop');
   }
 
-  tasks.push(runSymlink(tree.root, normalizedOptions.appProjectRoot));
+  // tasks.push(runSymlink(tree.root, normalizedOptions.appProjectRoot));
   
 
   return runTasksInSerial(...tasks);
