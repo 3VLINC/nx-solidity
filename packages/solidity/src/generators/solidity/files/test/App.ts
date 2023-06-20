@@ -1,16 +1,14 @@
-import { ethers } from '@nomiclabs/hardhat-ethers';
 import { expect } from 'chai';
+import { ethers } from "hardhat";
+
 describe('App', async function () {
-  it('When calling hello should return "world"', async () => {
+  it('When calling hello should return "world!"', async () => {
     const [contractOwner] = await ethers.getSigners();
-    const App = (await ethers.getContractFactory(
-        'App'
-      ));
-    const appInstance = await App.connect(contractOwner).deploy();
-
-    await appInstance.deployed();
-
-    const res = await appInstance.hello();
+    const appInstance = await ethers.getContractFactory('App');
+    
+    const app = await appInstance.connect(contractOwner).deploy();
+    
+    const res = await app.hello();
     
     return expect(res).to.be('world');
   });
