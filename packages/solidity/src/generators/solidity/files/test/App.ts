@@ -4,7 +4,7 @@ import { App__factory } from '../typechain-types';
 describe('App', async function () {
   it('When calling hello should return "world!"', async () => {
     const [contractOwner] = await ethers.getSigners();
-    const appInstance = await ethers.getContractFactory<[], App__factory>('App');
+    const appInstance = await ethers.getContractFactory('App') as App__factory;
     
     const app = await appInstance.connect(contractOwner).deploy();
     
