@@ -14,6 +14,16 @@
       "implementation": "./src/executors/coverage/executor",
       "schema": "./src/executors/coverage/schema.json",
       "description": "coverage executor"
+    },
+    "deploy": {
+      "implementation": "./src/executors/deploy/executor",
+      "schema": "./src/executors/deploy/schema.json",
+      "description": "deploy executor"
+    },
+    "serve": {
+      "implementation": "./src/executors/serve/executor",
+      "schema": "./src/executors/serve/schema.json",
+      "description": "serve executor"
     }
   }
 }

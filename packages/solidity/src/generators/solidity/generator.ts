@@ -88,19 +88,34 @@ export async function solidityGenerator(
       test: {
         executor: 'solidity:test',
         options: {
-          hardhatConfig: joinPathFragments(normalizedOptions.appProjectRoot, 'hardhat.config.ts')
+          hardhatConfig: joinPathFragments('./', normalizedOptions.appProjectRoot, 'hardhat.config.ts')
         }
       },
       compile: {
         executor: 'solidity:compile',
         options: {
-          hardhatConfig: joinPathFragments(normalizedOptions.appProjectRoot, 'hardhat.config.ts')
+          hardhatConfig: joinPathFragments('./', normalizedOptions.appProjectRoot, 'hardhat.config.ts')
         }
       },
       coverage: {
         executor: 'solidity:coverage',
         options: {
-          hardhatConfig: joinPathFragments(normalizedOptions.appProjectRoot, 'hardhat.config.ts')
+          hardhatConfig: joinPathFragments('./', normalizedOptions.appProjectRoot, 'hardhat.config.ts')
+        }
+      },
+      deploy: {
+        executor: 'solidity:deploy',
+        options: {
+          hardhatConfig: joinPathFragments('./', normalizedOptions.appProjectRoot, 'hardhat.config.ts'),
+          script: './scripts/deploy.ts'
+        }
+      },
+      serve: {
+        executor: 'solidity:serve',
+        options: {
+          hardhatConfig: joinPathFragments(normalizedOptions.appProjectRoot, 'hardhat.config.ts'),
+          hostname: '0.0.0.0',
+          port: '8545'
         }
       },
     },

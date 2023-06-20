@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "Serve executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "hardhatConfig": {
+        "type": "string",
+        "description": "Path to the hardhat config file"
+    },
+    "hostname": {
+        "type": "string",
+        "description": "The hostname to attach to"
+    }
+  },
+  "required": []
+}

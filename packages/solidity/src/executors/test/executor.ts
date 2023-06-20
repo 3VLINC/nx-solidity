@@ -1,9 +1,9 @@
 import { ExecutorContext } from '@nx/devkit';
 import { TestExecutorSchema } from './schema';
-import { run } from '../libs/run';
+import { runWithOutput } from '../libs/runWithOutput';
 
 export default async function runExecutor(schema: TestExecutorSchema, context: ExecutorContext) {
 
-  return run({ command: 'test', schema }, context)
+  return runWithOutput(`test`, schema, [], context)
   
 }

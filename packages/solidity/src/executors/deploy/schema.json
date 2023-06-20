@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "Deploy executor",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "hardhatConfig": {
+        "type": "string",
+        "description": "Path to the hardhat config file"
+    },
+    "script": {
+        "type": "string",
+        "description": "Path to the script to execute"
+    }
+  },
+  "required": []
+}

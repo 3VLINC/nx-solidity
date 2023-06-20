@@ -1,3 +1,2 @@
-export interface TestExecutorSchema {
-    hardhatConfig: string;
-} // eslint-disable-line
+import { CommandArgs } from "../libs/interface";
+export type TestExecutorSchema = CommandArgs;

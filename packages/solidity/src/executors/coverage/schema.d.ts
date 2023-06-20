@@ -1,3 +1,3 @@
-export interface CoverageExecutorSchema {
-    hardhatConfig: string;
-} // eslint-disable-line
+import { CommandArgs } from "../libs/interface";
+
+export type CoverageExecutorSchema = CommandArgs

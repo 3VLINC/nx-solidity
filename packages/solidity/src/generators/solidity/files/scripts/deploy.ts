@@ -12,7 +12,7 @@ async function main() {
     .deploy();
   
   const { blockNumber } = await appInstance.deploymentTransaction().wait();
-  const address = appInstance.getAddress();
+  const address = await appInstance.getAddress();
 
   console.log(
     'App deployed to:',
