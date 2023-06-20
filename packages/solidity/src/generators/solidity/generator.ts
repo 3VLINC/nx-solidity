@@ -78,12 +78,12 @@ export function runSymlink(
   projectRoot: string
 ): GeneratorCallback {
   return () => {
-    logger.info(`creating symlinks for ${chalk.bold(projectRoot)}`);
+    logger.info(`creating symlinks for ${projectRoot}`);
     try {
       ensureNodeModulesSymlink(workspaceRoot, projectRoot);
     } catch {
       throw new Error(
-        `Failed to create symlinks for ${chalk.bold(projectRoot)}`
+        `Failed to create symlinks for ${projectRoot}`
       );
     }
   };
@@ -135,6 +135,7 @@ export async function solidityGenerator(
     join(__dirname, './files'),
     normalizedOptions.appProjectRoot,
     {
+      projectName: normalizedOptions.name,
       compiler: options.compiler,
       networks: options.network
     }
