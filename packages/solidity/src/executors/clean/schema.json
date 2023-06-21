@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "Clean executor",
+  "description": "Clears the cache and deletes all artifacts",
+  "type": "object",
+  "properties": {
+    "hardhatConfig": {
+        "type": "string",
+        "description": "Path to the hardhat config file"
+    },
+    "global": {
+      "type": "string",
+      "description": "Clear the global cache"
+    }
+  },
+  "required": []
+}

@@ -2,12 +2,28 @@
   "$schema": "http://json-schema.org/schema",
   "version": 2,
   "title": "Compile executor",
-  "description": "",
+  "description": "Compiles the entire project, building all artifacts",
   "type": "object",
   "properties": {
     "hardhatConfig": {
         "type": "string",
         "description": "Path to the hardhat config file"
+    },
+    "concurrency": {
+        "type": "integer",
+        "description": "Number of compilation jobs executed in parallel. Defaults to the number of CPU cores - 1 (default: 9)"
+    },
+    "force": {
+        "type": "boolean",
+        "description": "Force compilation ignoring cache"
+    },
+    "no-typechain": {
+      "type": "boolean",
+      "description": "Skip Typechain compilation"
+    },
+    "quiet": {
+      "type": "boolean",
+      "description": "Makes the compilation process less verbose"
     }
   },
   "required": []

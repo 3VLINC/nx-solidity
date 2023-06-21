@@ -1,8 +1,8 @@
 import { ExecutorContext } from '@nx/devkit';
 import { DeployExecutorSchema } from './schema';
-import { runWithOutput } from '../libs/runWithOutput';
+import { run } from '../libs/run';
 
 export default async function runExecutor(schema: DeployExecutorSchema, context: ExecutorContext) {
   const { script, ...args } = schema;
-  return runWithOutput('run', args, [script], context);
+  return run('run', args, [script], context);
 }

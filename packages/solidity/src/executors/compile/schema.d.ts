@@ -1,2 +1,4 @@
 import { CommandArgs } from "../libs/interface";
-export type CompileExecutorSchema =  CommandArgs;
+export interface CompileExecutorSchema extends CommandArgs {
+    concurrency: number;
+};

@@ -81,6 +81,8 @@ export async function solidityGenerator(
   const config = readProjectConfiguration(tree, options.name);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { build, serve, ...targets } = config.targets;
+  const hardhatConfig = joinPathFragments('./', normalizedOptions.appProjectRoot, 'hardhat.config.ts');
+
   updateProjectConfiguration(tree, options.name, {
     ...config,
     targets: {
@@ -88,32 +90,38 @@ export async function solidityGenerator(
       test: {
         executor: 'solidity:test',
         options: {
-          hardhatConfig: joinPathFragments('./', normalizedOptions.appProjectRoot, 'hardhat.config.ts')
+          hardhatConfig
+        }
+      },
+      clean: {
+        executor: 'solidity:clean',
+        options: {
+          hardhatConfig
         }
       },
       compile: {
         executor: 'solidity:compile',
         options: {
-          hardhatConfig: joinPathFragments('./', normalizedOptions.appProjectRoot, 'hardhat.config.ts')
+          hardhatConfig
         }
       },
       coverage: {
         executor: 'solidity:coverage',
         options: {
-          hardhatConfig: joinPathFragments('./', normalizedOptions.appProjectRoot, 'hardhat.config.ts')
+          hardhatConfig
         }
       },
       deploy: {
         executor: 'solidity:deploy',
         options: {
-          hardhatConfig: joinPathFragments('./', normalizedOptions.appProjectRoot, 'hardhat.config.ts'),
+          hardhatConfig,
           script: './scripts/deploy.ts'
         }
       },
       serve: {
         executor: 'solidity:serve',
         options: {
-          hardhatConfig: joinPathFragments(normalizedOptions.appProjectRoot, 'hardhat.config.ts'),
+          hardhatConfig,
           hostname: '0.0.0.0',
           port: '8545'
         }

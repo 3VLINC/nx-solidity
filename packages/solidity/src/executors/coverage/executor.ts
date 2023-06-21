@@ -1,9 +1,9 @@
 import { ExecutorContext } from '@nx/devkit';
 import { CoverageExecutorSchema } from './schema';
-import { runWithOutput } from '../libs/runWithOutput';
+import { run } from '../libs/run';
 
 export default async function runExecutor(schema: CoverageExecutorSchema, context: ExecutorContext) {
 
-  return runWithOutput('coverage', schema, [], context)
+  return run('coverage', schema, [], context)
   
 }
