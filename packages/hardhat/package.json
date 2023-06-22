@@ -1,0 +1,10 @@
+{
+  "name": "@3vl/nx-hardhat",
+  "version": "0.0.1-beta.0",
+  "type": "commonjs",
+  "generators": "./generators.json",
+  "executors": "./executors.json",
+  "dependencies": {
+    "@nx/devkit": "^16.3.2"
+  }
+}

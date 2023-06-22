@@ -19,7 +19,7 @@ import * as NxNode from '@nx/node';
 import { SolidityGeneratorSchema } from './schema';
 import { join } from 'path';
 
-const nxVersion = '16.2.2';
+const nxVersion = '16.3.2';
 
 function normalizeOptions(host: Tree, options: SolidityGeneratorSchema) {
   const { layoutDirectory, projectDirectory } = extractLayoutDirectory(
@@ -80,46 +80,44 @@ export async function solidityGenerator(
 
   const config = readProjectConfiguration(tree, options.name);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { build, serve, ...targets } = config.targets;
   const hardhatConfig = joinPathFragments('./', normalizedOptions.appProjectRoot, 'hardhat.config.ts');
 
   updateProjectConfiguration(tree, options.name, {
     ...config,
     targets: {
-      ...targets,
       test: {
-        executor: 'solidity:test',
+        executor: '@3vl/nx-hardhat:test',
         options: {
           hardhatConfig
         }
       },
       clean: {
-        executor: 'solidity:clean',
+        executor: '@3vl/nx-hardhat:clean',
         options: {
           hardhatConfig
         }
       },
       compile: {
-        executor: 'solidity:compile',
+        executor: '@3vl/nx-hardhat:compile',
         options: {
           hardhatConfig
         }
       },
       coverage: {
-        executor: 'solidity:coverage',
+        executor: '@3vl/nx-hardhat:coverage',
         options: {
           hardhatConfig
         }
       },
       deploy: {
-        executor: 'solidity:deploy',
+        executor: '@3vl/nx-hardhat:deploy',
         options: {
           hardhatConfig,
           script: './scripts/deploy.ts'
         }
       },
       serve: {
-        executor: 'solidity:serve',
+        executor: '@3vl/nx-hardhat:serve',
         options: {
           hardhatConfig,
           hostname: '0.0.0.0',

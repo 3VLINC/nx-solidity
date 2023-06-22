@@ -1,50 +1,52 @@
 {
-  "name": "solidity",
+  "name": "hardhat",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/solidity/src",
+  "sourceRoot": "packages/hardhat/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/packages/solidity",
-        "main": "packages/solidity/src/index.ts",
-        "tsConfig": "packages/solidity/tsconfig.lib.json",
+        "outputPath": "dist/packages/hardhat",
+        "main": "packages/hardhat/src/index.ts",
+        "tsConfig": "packages/hardhat/tsconfig.lib.json",
         "assets": [
-          "packages/solidity/*.md",
+          "packages/hardhat/*.md",
           {
-            "input": "./packages/solidity/src",
+            "input": "./packages/hardhat/src",
             "glob": "**/!(*.ts)",
             "output": "./src"
           },
           {
-            "input": "./packages/solidity/src",
+            "input": "./packages/hardhat/src",
             "glob": "**/*.d.ts",
             "output": "./src"
           },
           {
-            "input": "./packages/solidity",
+            "input": "./packages/hardhat",
             "glob": "generators.json",
             "output": "."
           },
           {
-            "input": "./packages/solidity",
+            "input": "./packages/hardhat",
             "glob": "executors.json",
             "output": "."
           }
         ]
       }
     },
+    "publish": {
+      "command": "node tools/scripts/publish.mjs hardhat {args.ver} {args.tag}",
+      "dependsOn": ["build"]
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "packages/solidity/**/*.ts",
-          "packages/solidity/package.json",
-          "packages/solidity/generators.json",
-          "packages/solidity/executors.json"
+          "packages/hardhat/**/*.ts",
+          "packages/hardhat/package.json"
         ]
       }
     },
@@ -52,7 +54,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "packages/solidity/jest.config.ts",
+        "jestConfig": "packages/hardhat/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
