@@ -16,12 +16,12 @@ import {
   updateProjectConfiguration,
 } from '@nx/devkit';
 import * as NxNode from '@nx/node';
-import { SolidityGeneratorSchema } from './schema';
+import { HardhatGeneratorSchema } from './schema';
 import { join } from 'path';
 
 const nxVersion = '16.3.2';
 
-function normalizeOptions(host: Tree, options: SolidityGeneratorSchema) {
+function normalizeOptions(host: Tree, options: HardhatGeneratorSchema) {
   const { layoutDirectory, projectDirectory } = extractLayoutDirectory(
     options.directory
   );
@@ -53,9 +53,9 @@ function normalizeOptions(host: Tree, options: SolidityGeneratorSchema) {
 }
 
 
-export async function solidityGenerator(
+export async function hardhatGenerator(
   tree: Tree,
-  options: SolidityGeneratorSchema
+  options: HardhatGeneratorSchema
 ) {
   
   const tasks: GeneratorCallback[] = [];
@@ -190,4 +190,4 @@ export async function solidityGenerator(
 }
 
 
-export default solidityGenerator;
+export default hardhatGenerator;

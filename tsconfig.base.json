@@ -16,7 +16,6 @@
     "baseUrl": ".",
     "paths": {
       "hardhat": ["packages/hardhat/src/index.ts"],
-      "solidity": ["packages/solidity/src/index.ts"],
       "subgraph": ["packages/subgraph/src/index.ts"]
     }
   },

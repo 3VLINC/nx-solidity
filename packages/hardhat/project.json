@@ -20,7 +20,7 @@
           },
           {
             "input": "./packages/hardhat/src",
-            "glob": "/generators/solidity/files/**/*.ts",
+            "glob": "/generators/hardhat/files/**/*.ts",
             "output": "./src"
           },
           {

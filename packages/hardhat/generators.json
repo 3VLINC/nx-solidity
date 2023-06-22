@@ -1,9 +1,9 @@
 {
   "generators": {
-    "solidity": {
-      "factory": "./src/generators/solidity/generator",
-      "schema": "./src/generators/solidity/schema.json",
-      "description": "solidity generator"
+    "application": {
+      "factory": "./src/generators/application/generator",
+      "schema": "./src/generators/application/schema.json",
+      "description": "Creates a hardhat application"
     }
   }
 }

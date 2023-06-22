@@ -1,19 +1,19 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { Tree, readProjectConfiguration } from '@nx/devkit';
 
-import { solidityGenerator } from './generator';
-import { SolidityGeneratorSchema } from './schema';
+import { hardhatGenerator } from './generator';
+import { HardhatGeneratorSchema } from './schema';
 
-describe('solidity generator', () => {
+describe('hardhat generator', () => {
   let tree: Tree;
-  const options: SolidityGeneratorSchema = { compiler: '0.81' };
+  const options: HardhatGeneratorSchema = { compiler: '0.81' };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
   });
 
   it('should run successfully', async () => {
-    await solidityGenerator(tree, options);
+    await hardhatGenerator(tree, options);
     const config = readProjectConfiguration(tree, 'test');
     expect(config).toBeDefined();
   });
