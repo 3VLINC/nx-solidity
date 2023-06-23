@@ -143,7 +143,7 @@ export async function hardhatGenerator(
   });
   
   updateJson(tree, join(normalizedOptions.appProjectRoot, 'tsconfig.app.json'), (pkgJson) => {
-    pkgJson.compilerOptions.types = [...pkgJson.compilerOptions.types, "@nomiclabs/hardhat-ethers", "./typechain-types/hardhat.d.ts", "./typechain-types/index.ts"];
+    pkgJson.compilerOptions.types = [...pkgJson.compilerOptions.types, "@nomicfoundation/hardhat-ethers", "./typechain-types/hardhat.d.ts", "./typechain-types/index.ts"];
     pkgJson.exclude = ["hardhat.config.ts"],
     pkgJson.include = ["scripts/**/*.ts", "test/**/*.ts"]
     return pkgJson;
